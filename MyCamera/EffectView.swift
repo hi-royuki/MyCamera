@@ -79,6 +79,8 @@ struct EffectView: View {
             //「シェア」ボタン
             Button(action: {
                 //ボタンをタップしたときのアクション
+                //UIActivityViewControllerを表示する
+                isShowActivity = true
             }) {
                 //テキストを表示する
                 Text("シェア")
@@ -88,6 +90,10 @@ struct EffectView: View {
                     .background(Color.blue)
                     .foregroundColor(Color.white)
             }//シェアボタンここまで
+            .sheet(isPresented: $isShowActivity) {
+                //UIActivityViewControllerを表示する
+                ActivityView(shareItems: [showImage])
+            }
             //スペース追加
             .padding()
             //閉じるボタン
