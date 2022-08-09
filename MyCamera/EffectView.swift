@@ -26,7 +26,7 @@ struct EffectView: View {
             
             if let unwrapShowImage = showImage {
                 //表示する写真がある場合は画面に表示
-                Image(uiImage:  unwrapShowImage)
+                Image(uiImage: unwrapShowImage)
                 //リサイズする
                     .resizable()
                 //アスペクト比（縦横比）を維持して画面内に収まるようにする
@@ -63,7 +63,7 @@ struct EffectView: View {
                     return
                 }
                 //フィルタ加工後の画像をCGImage形式からUIImage形式へ変更、その際に回転角度を指定
-                showImage = UIImage(cgImage: cgImage,scale: 1.0, orientation: rotate)
+                showImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: rotate)
                 
             }) {
                 //テキストを表示する
