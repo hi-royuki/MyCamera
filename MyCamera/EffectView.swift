@@ -44,7 +44,7 @@ struct EffectView: View {
                 //UIImage形式の画像をCIImage形式に変換
                 let inputImage = CIImage(image: captureImage)
                 //フィルタの種別を引数で指定された種類を指定してCIFilterのインスタンスを取得
-                guard let effectFilter = CIFilter(name: filterName) else{
+                guard let effectFilter = CIFilter(name: filterName) else {
                     return
                 }
                 //フィルタ加工のパラメータを初期化
@@ -59,7 +59,7 @@ struct EffectView: View {
                 let ciContext = CIContext(options: nil)
                 //フィルタ加工後の画像をCIContext上に描写し、結果をcgImageとしてCGImage形式の画像を取得
                 guard let cgImage = ciContext.createCGImage(outputImage, from: outputImage.extent)
-                else{
+                else {
                     return
                 }
                 //フィルタ加工後の画像をCGImage形式からUIImage形式へ変更、その際に回転角度を指定
