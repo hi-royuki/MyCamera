@@ -92,13 +92,14 @@ struct EffectView: View {
             }//シェアボタンここまで
             .sheet(isPresented: $isShowActivity) {
                 //UIActivityViewControllerを表示する
-                ActivityView(shareItems: [showImage])
+                ActivityView(shareItems: [showImage!])
             }
             //スペース追加
             .padding()
             //閉じるボタン
             Button(action: {
                 //ボタンをタップしたときのアクション
+                isShowSheet = false
             }){
                 Text("閉じる")
                     .frame(maxWidth: .infinity)
