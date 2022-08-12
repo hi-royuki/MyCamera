@@ -21,15 +21,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            //スペースを追加
-            Spacer()
-            //撮影した写真があるとき
-            if let unwrapCaptureImage = captureImage{
-                //撮影写真を表示
-                Image(uiImage: unwrapCaptureImage)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-            }
             
             //スペースを追加
             Spacer()
