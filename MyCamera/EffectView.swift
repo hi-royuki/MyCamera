@@ -44,15 +44,18 @@ struct EffectView: View {
                 //UIImage形式の画像をCIImage形式に変換
                 let inputImage = CIImage(image: captureImage)
                 //フィルタの種別を引数で指定された種類を指定してCIFilterのインスタンスを取得
-                guard let effectFilter = CIFilter(name: filterName) else {
+                guard let effectFilter =
+                        CIFilter(name: filterName) else {
                     return
                 }
                 //フィルタ加工のパラメータを初期化
                 effectFilter.setDefaults()
                 //インスタンスにフィルタ加工する元画像を設定
-                effectFilter.setValue(inputImage, forKey: kCIInputImageKey)
+                effectFilter.setValue(
+                    inputImage, forKey: kCIInputImageKey)
                 //フィルタ加工を行う情報を生成
-                guard let outputImage = effectFilter.outputImage else{
+                guard let outputImage =
+                        effectFilter.outputImage else{
                     return
                 }
                 //CIContextのインスタンスを取得
