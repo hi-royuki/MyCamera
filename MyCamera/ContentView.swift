@@ -26,15 +26,8 @@ struct ContentView: View {
             Spacer()
             Button(action: {
                 //ボタンをタップしたときのアクション
-                //カメラが利用可能かチェックする
-                if UIImagePickerController.isSourceTypeAvailable(.camera)
-                {
-                    print("カメラは利用できます")
-                    //カメラが使えるなら
                     isShowAction = true
-                }else {
-                    print("カメラは利用できません")
-                }
+                    isShowAction = true
             }){
                 //テキスト表示
                 Text("カメラを起動する")
@@ -53,13 +46,23 @@ struct ContentView: View {
             //sheetを表示
             //isPresentedで指定した状態変数がtrueのとき実行
             .sheet(isPresented: $isShowSheet) {
-                //フォトライブラリーが選択された
-                if isPhotolibrary {
-                    //PHPickerViewController（フォトライブラリー）を表示
-                    PHPickerView(isShowSheet: $isShowSheet, captureImage: $captureImage)
-                }else {
-                    //UIImagePickerController(写真撮影)を表示
-                    ImagePickerView(isShowSheet: $isShowSheet, captureImage: $captureImage)
+                if let unwrapCaptureImage = captureImage {
+                    EffectView(
+                        isShowSheet: $isShowSheet,
+                        captureImage: unwrapCaptureImage)
+                } else {
+                    //フォトライブラリーが選択された
+                    if isPhotolibrary {
+                        //PHPickerViewControllre(フォトライブラリー)を表示
+                        PHPickerView(
+                            isShowSheet: $isShowSheet,
+                            captureImage: $captureImage)
+                    } else {
+                        //UIImagePickerControllre(写真撮影)を表示
+                        ImagePickerView(
+                            isShowSheet: $isShowSheet,
+                            captureImage: $captureImage)
+                    }
                 }
             }
             
