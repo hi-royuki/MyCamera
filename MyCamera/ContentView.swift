@@ -12,8 +12,7 @@ struct ContentView: View {
     @State var captureImage: UIImage? = nil
     //撮影画面（sheet）の開閉状態を管理
     @State var isShowSheet = false
-    //シェア画面の（Sheet）の開閉状態を管理
-    @State var isShowActivity = false
+    
     //フォトライブラリーかカメラかを保持する状態変数
     @State var isPhotolibrary = false
     //選択画面(ActionSheet)のSheet開閉ぞゆたいを管理
@@ -98,39 +97,6 @@ struct ContentView: View {
                                 .cancel(),
                             ])//ActionSheetここまで
             }//.actionSheetここまで
-            
-                
-            
-            Button(action: {
-                //ボタンをタップしたときのアクション
-                //撮影した写真があるときだけ
-                //UIActivityViewController(シェア機能)表示
-                if let _ = captureImage {
-                    isShowActivity = true
-                }
-                
-            }) {
-                Text("SNSに投稿する")
-                    //横幅いっぱい
-                    .frame(maxWidth: .infinity)
-                    //高さ５０ポイントを指定
-                    .frame(height: 50)
-                    //文字列をセンタリング指定
-                    .multilineTextAlignment(.center)
-                    //背景を青色に指定
-                    .background(Color.blue)
-                    //文字色を白色に指定
-                    .foregroundColor(Color.white)
-            }
-            .padding()
-                //sheetを表示
-                //isPresentedで指定した状態変数がtrueのとき実行
-            .sheet(isPresented: $isShowActivity) {
-                //UIActivityViewController（シャア機能）を表示
-                ActivityView(shareItems: [captureImage!])
-            }
-            
-           
         }
     }
 }
