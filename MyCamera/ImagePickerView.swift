@@ -36,6 +36,7 @@ struct ImagePickerView: UIViewControllerRepresentable {
                 parent.captureImage = originalImage
             }
             //sheetを閉じない
+            //写真の取得が完了してもSheetを閉じずに表示されたままになる
             parent.isShowSheet = true
         }
         //キャンセルボタンが選択された時に呼ばれる
