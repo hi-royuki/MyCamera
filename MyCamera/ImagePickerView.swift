@@ -35,8 +35,8 @@ struct ImagePickerView: UIViewControllerRepresentable {
                 as? UIImage {
                 parent.captureImage = originalImage
             }
-            //sheetを閉じる
-            parent.isShowSheet = false
+            //sheetを閉じない
+            parent.isShowSheet = true
         }
         //キャンセルボタンが選択された時に呼ばれる
         //delegateメソッド、必ず必要
