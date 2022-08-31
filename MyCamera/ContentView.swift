@@ -12,7 +12,6 @@ struct ContentView: View {
     @State var captureImage: UIImage? = nil
     //撮影画面（sheet）の開閉状態を管理
     @State var isShowSheet = false
-    
     //フォトライブラリーかカメラかを保持する状態変数
     @State var isPhotolibrary = false
     //選択画面(ActionSheet)のSheet開閉ぞゆたいを管理
@@ -26,7 +25,9 @@ struct ContentView: View {
             Spacer()
             Button(action: {
                 //ボタンをタップしたときのアクション
-                    isShowAction = true
+                    //撮影写真を初期化する
+                    captureImage = nil
+                    //ActionSheetを表示する
                     isShowAction = true
             }){
                 //テキスト表示
