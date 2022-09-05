@@ -6,6 +6,20 @@
 //
 
 import SwiftUI
+//フィルター名を列挙した配列(Array)
+let filterArray = ["CIPhotoEffectmono",
+                   "CIPhotoEffectChrome",
+                   "CIPhotoEffectFade",
+                   "CIPhotoEffectInstant",
+                   "CIPhotoEffectNoir",
+                   "CIPhotoEffectProcess",
+                   "CIPhotoEffectTonal",
+                   "CIPhotoEffectTransfer",
+                   "CISepiaTone"]
+
+//選択中のエフェクト(fileterArrayの添字)
+var filterSelectNumber = 0
+
 
 struct EffectView: View {
     //エフェクト編集画面（Sheet）の開閉状態を管理
@@ -37,8 +51,15 @@ struct EffectView: View {
             //エフェクトボタン
             Button(action: {
                 //ボタンをタップしたときのアクション
-                //フィルタ名を指定
-                let filterName = "CIphotoEffectMono"
+                //フィルタ名を配列から取得
+                let filterName = filterArray[filterSelectNumber]
+                //次回に適用するフィルタを決めておく
+                filterSelectNumber += 1
+                //最後のフィルタなで適用した場合
+                if filterSelectNumber == filterArray.count {
+                    //最後の場合は最初のフィルタに戻す
+                    filterSelectNumber = 0
+                }
                 //元の画像の回転角度を取得
                 let rotate = captureImage.imageOrientation
                 //UIImage形式の画像をCIImage形式に変換
